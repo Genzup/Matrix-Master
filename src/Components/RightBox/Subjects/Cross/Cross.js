@@ -71,9 +71,9 @@ class Cross extends React.Component {
 				<h1 className="center">Cross Product</h1>
 				<div> 
 					<div>
-						<Matrix assignID={'matI'} rows={rows} cols="1" onChangeFunction={setModify1}/>
+						<Matrix assignID="matI" rows={rows} cols="1" onChangeFunction={setModify1}/>
 						<div className="symbol"><p>x</p></div>
-						<Matrix assignID={'matJ'} rows={rows} cols="1" onChangeFunction={setModify2}/>
+						<Matrix assignID="matJ" rows={rows} cols="1" onChangeFunction={setModify2}/>
 					</div>
 					<CalculateButton onClickFunction={setSolve} />
 				</div>

@@ -11,7 +11,7 @@ import {
 	setSolvePgram, 
 } from './State/actions';
 
-const mapStateToProps = (state) => { 
+const mapStateToProps = (state) => {
   	return {
   		rows: state.createMatrix.PgramRows,
   		matrixArray1: state.createMatrix.PgramVector1, 
