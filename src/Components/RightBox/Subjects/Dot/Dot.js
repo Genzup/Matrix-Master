@@ -72,8 +72,18 @@ class Dot extends React.Component {
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID="matG" rows={rows} cols={1} onChangeFunction={setModify}/>
-								<Matrix assignID="matH" rows={rows} cols={1} onChangeFunction={setModify2}/>
+								<Matrix 
+									assignID="matG" 
+									rows={rows} 
+									cols={1} 
+									onChangeFunction={setModify}
+								/>
+								<Matrix 
+									assignID="matH" 
+									rows={rows} 
+									cols={1} 
+									onChangeFunction={setModify2}
+								/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
