@@ -54,13 +54,21 @@ class Expon extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Matrix Exponential</h1>
 				<div> 
-					<MatrixSelect	setId="rowsExpon"  onChangeFunction={setCreate} />
+					<MatrixSelect
+						setId="rowsExpon"  
+						onChangeFunction={setCreate}
+					/>
 				</div>
 				{ 
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID="matG" rows={rows} cols={rows} onChangeFunction={setModify}/>
+								<Matrix 
+									assignID="matG" 
+									rows={rows} 
+									cols={rows} 
+									onChangeFunction={setModify}
+								/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
