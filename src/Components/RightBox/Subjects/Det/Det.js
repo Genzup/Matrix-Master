@@ -56,7 +56,12 @@ class Det extends React.Component {
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID="matC" rows={rows} cols={rows} onChangeFunction={setModify}/>
+								<Matrix 
+									assignID="matC" 
+									rows={rows} 
+									cols={rows} 
+									onChangeFunction={setModify}
+								/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
