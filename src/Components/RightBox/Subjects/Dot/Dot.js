@@ -66,14 +66,14 @@ class Dot extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Dot Product</h1>
 				<div> 
-					<MatrixSelect	setId={"rowsDot"}  onChangeFunction={setCreate} />
+					<MatrixSelect	setId="rowsDot"  onChangeFunction={setCreate} />
 				</div>
 				{ 
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID={'matG'} rows={rows} cols={1} onChangeFunction={setModify}/>
-								<Matrix assignID={'matH'} rows={rows} cols={1} onChangeFunction={setModify2}/>
+								<Matrix assignID="matG" rows={rows} cols={1} onChangeFunction={setModify}/>
+								<Matrix assignID="matH" rows={rows} cols={1} onChangeFunction={setModify2}/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
