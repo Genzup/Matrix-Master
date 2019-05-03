@@ -50,13 +50,13 @@ class Det extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Determinant</h1>
 				<div> 
-					<MatrixSelect	setId={"rowsDet"}  onChangeFunction={setCreate} />
+					<MatrixSelect	setId="rowsDet"  onChangeFunction={setCreate} />
 				</div>
 				{ 
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID={'matC'} rows={rows} cols={rows} onChangeFunction={setModify}/>
+								<Matrix assignID="matC" rows={rows} cols={rows} onChangeFunction={setModify}/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
