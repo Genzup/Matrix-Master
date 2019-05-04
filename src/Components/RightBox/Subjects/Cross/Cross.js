@@ -64,27 +64,50 @@ class Cross extends React.Component {
 	componentDidMount() {
 		this.props.setCreate();
 	}
+	renderMatrices() {
+		const { rows, setModify1, setModify2, setSolve } = this.props;
+		return(
+			<div> 
+				<div>
+					<Matrix 
+						assignID="matI" 
+						rows={rows} cols="1" 
+						onChangeFunction={setModify1}
+					/>
+					<div className="symbol"><p>x</p></div>
+					<Matrix 
+						assignID="matJ" 
+						rows={rows} 
+						cols="1" 
+						onChangeFunction={setModify2}
+					/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
+	renderCaption() {
+		const {matrixArray1, matrixArray2, solve} = this.props;
+		return(
+			<React.Fragment>
+			{
+				(solve) ? 
+					<MatrixPrint 
+						solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)}
+					/> 
+				:
+					<p>Click submit to compute</p>
+			}
+			</React.Fragment>
+		);
+	}
+
 	render() {
-		const {rows, matrixArray1, matrixArray2, solve, setModify1, setModify2, setSolve} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Cross Product</h1>
-				<div> 
-					<div>
-						<Matrix assignID="matI" rows={rows} cols="1" onChangeFunction={setModify1}/>
-						<div className="symbol"><p>x</p></div>
-						<Matrix assignID="matJ" rows={rows} cols="1" onChangeFunction={setModify2}/>
-					</div>
-					<CalculateButton onClickFunction={setSolve} />
-				</div>
-				{
-					(solve) ? 
-						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} /> 
-					:(rows) ?
-						<p>Click submit to compute</p>
-					: 
-						<p>Select the size of the matrices</p>
-				}
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	};
