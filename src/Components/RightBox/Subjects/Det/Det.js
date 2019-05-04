@@ -27,7 +27,6 @@ const mapDispatchToProps = (dispatch) => {
  				document.getElementById('rowsDet').value, 
  			) 
  		),
-
  		setModify: (event) => dispatch(
  			setModifyDetMatrix(
  				event.target.id, 
@@ -44,40 +43,58 @@ class Det extends React.Component {
 	componentWillUnmount() {
 		console.log('component has unmounted')
 	}
+	renderSelect() {
+		const { setCreate } = this.props;
+		return(
+			<div> 
+				<MatrixSelect
+					setId="rowsDet"  
+					onChangeFunction={setCreate}
+				/>
+			</div>
+		);
+	}
+	renderMatrices() {
+		const { rows, setModify, setSolve } = this.props;
+		if (!rows) return;
+		return(
+			<div> 
+				<div>
+					<Matrix 
+						assignID="matC" 
+						rows={rows} 
+						cols={rows} 
+						onChangeFunction={setModify}
+					/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
+	renderCaption() {
+		const {rows, matrixArray, solve } = this.props;
+		return(
+			<React.Fragment>
+			{
+				(solve) ? 
+					<p>
+						The determinant is { math.det(matrixArray) }
+					</p>
+				:(rows) ?
+					<p>Click submit to compute</p>
+				: 
+					<p>Select the size of the matrices</p>
+			}
+			</React.Fragment>
+		);
+	}
 	render() {
-		const {rows, matrixArray, solve, setCreate, setModify, setSolve} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Determinant</h1>
-				<div> 
-					<MatrixSelect	setId="rowsDet"  onChangeFunction={setCreate} />
-				</div>
-				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix 
-									assignID="matC" 
-									rows={rows} 
-									cols={rows} 
-									onChangeFunction={setModify}
-								/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
-				}
-				{
-					(solve) ? 
-						<p>
-							The determinant is { math.det(matrixArray) }
-						</p>
-					:(rows) ?
-						<p>Click submit to compute</p>
-					: 
-						<p>Select the size of the matrices</p>
-				}
+				{ this.renderSelect() }
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	};
