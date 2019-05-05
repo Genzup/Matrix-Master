@@ -60,39 +60,41 @@ class Dot extends React.Component {
 	componentWillUnmount() {
 		console.log('component has unmounted')
 	}
+	renderMatrices() {
+		const { rows, setModify, setModify2, setSolve } = this.props;
+		if (!rows) return; 
+		return(
+			<div> 
+				<div>
+					<Matrix 
+						assignID="matG" 
+						rows={rows} 
+						cols={1} 
+						onChangeFunction={setModify}
+					/>
+					<Matrix 
+						assignID="matH" 
+						rows={rows} 
+						cols={1} 
+						onChangeFunction={setModify2}
+					/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		); 
+	}
+
 	render() {
-		const {rows, matrixArray1, matrixArray2, solve, setCreate, setModify, setModify2, setSolve} = this.props;
+		const {rows, matrixArray1, matrixArray2, solve, setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Dot Product</h1>
-				<div> 
-					<MatrixSelect	setId="rowsDot"  onChangeFunction={setCreate} />
-				</div>
+				<MatrixSelect	setId="rowsDot"  onChangeFunction={setCreate} />
 				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix 
-									assignID="matG" 
-									rows={rows} 
-									cols={1} 
-									onChangeFunction={setModify}
-								/>
-								<Matrix 
-									assignID="matH" 
-									rows={rows} 
-									cols={1} 
-									onChangeFunction={setModify2}
-								/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
+					this.renderMatrices()
 				}
 				{
 					(solve) ? 
-						//<p>{matrixArray1} and {matrixArray2}</p>
 						<p>
 							The Dot Product is { math.dot(flatten(matrixArray1), flatten(matrixArray2)) }
 						</p>
