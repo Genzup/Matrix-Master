@@ -81,18 +81,12 @@ class Dot extends React.Component {
 				</div>
 				<CalculateButton onClickFunction={setSolve} />
 			</div>
-		); 
+		);
 	}
-
-	render() {
-		const {rows, matrixArray1, matrixArray2, solve, setCreate } = this.props;
+	renderCaption() {
+		const { rows, matrixArray1, matrixArray2, solve } = this.props;
 		return(
-			<div className="bg-black p2">
-				<h1 className="center">Dot Product</h1>
-				<MatrixSelect	setId="rowsDot"  onChangeFunction={setCreate} />
-				{ 
-					this.renderMatrices()
-				}
+			<React.Fragment>
 				{
 					(solve) ? 
 						<p>
@@ -103,6 +97,17 @@ class Dot extends React.Component {
 					: 
 						<p>Select the size of the matrices</p>
 				}
+			</React.Fragment>
+		);
+	}
+	render() {
+		const { setCreate } = this.props;
+		return(
+			<div className="bg-black p2">
+				<h1 className="center">Dot Product</h1>
+				<MatrixSelect	setId="rowsDot"  onChangeFunction={setCreate} />
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
