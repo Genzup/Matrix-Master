@@ -52,23 +52,36 @@ class Expon extends React.Component {
 		const { rows, setModify, setSolve } = this.props;
 		if (!rows) return null; 
 		return(
-			<React.Fragment>
-				<div> 
-					<div>
-						<Matrix 
-							assignID="matG" 
-							rows={rows} 
-							cols={rows} 
-							onChangeFunction={setModify}
-						/>
-					</div>
-					<CalculateButton onClickFunction={setSolve} />
+			<div> 
+				<div>
+					<Matrix 
+						assignID="matG" 
+						rows={rows} 
+						cols={rows} 
+						onChangeFunction={setModify}
+					/>
 				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
+	renderCaption() {
+		const { solve, rows, matrixArray } = this.props;
+ 		return(
+			<React.Fragment>
+				{
+					(solve) ?
+						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray)} />
+					:(rows) ?
+						<p>Click submit to compute</p>
+					: 
+						<p>Select the size of the matrices</p>
+				}
 			</React.Fragment>
 		);
 	}
 	render() {
-		const {rows, matrixArray, solve, setCreate } = this.props;
+		const { setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Matrix Exponential</h1>
@@ -79,14 +92,7 @@ class Expon extends React.Component {
 					/>
 				</div>
 				{ this.renderMatrices() }
-				{
-					(solve) ?
-						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray)} />
-					:(rows) ?
-						<p>Click submit to compute</p>
-					: 
-						<p>Select the size of the matrices</p>
-				}
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
