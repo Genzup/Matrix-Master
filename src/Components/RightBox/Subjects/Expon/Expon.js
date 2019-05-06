@@ -21,7 +21,7 @@ const mapStateToProps = (state) => {
   		solve: state.createMatrix.solveExpon, 
 	}
 }
- 
+
 const mapDispatchToProps = (dispatch) => { 
  	return {
  		setCreate: (event) => dispatch(
@@ -48,8 +48,27 @@ class Expon extends React.Component {
 	componentWillUnmount() {
 		console.log('component has unmounted')
 	}
+	renderMatrices() {
+		const { rows, setModify, setSolve } = this.props;
+		if (!rows) return null; 
+		return(
+			<React.Fragment>
+				<div> 
+					<div>
+						<Matrix 
+							assignID="matG" 
+							rows={rows} 
+							cols={rows} 
+							onChangeFunction={setModify}
+						/>
+					</div>
+					<CalculateButton onClickFunction={setSolve} />
+				</div>
+			</React.Fragment>
+		);
+	}
 	render() {
-		const {rows, matrixArray, solve, setCreate, setModify, setSolve} = this.props;
+		const {rows, matrixArray, solve, setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Matrix Exponential</h1>
@@ -59,22 +78,7 @@ class Expon extends React.Component {
 						onChangeFunction={setCreate}
 					/>
 				</div>
-				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix 
-									assignID="matG" 
-									rows={rows} 
-									cols={rows} 
-									onChangeFunction={setModify}
-								/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
-				}
+				{ this.renderMatrices() }
 				{
 					(solve) ?
 						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray)} />
