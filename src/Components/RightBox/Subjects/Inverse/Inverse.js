@@ -56,23 +56,16 @@ class Inverse extends React.Component {
 		return(
 			<div> 
 				<div>
-					<Matrix assignID={'matB'} rows={rows} cols={rows} onChangeFunction={setModify}/>
+					<Matrix assignID="matB" rows={rows} cols={rows} onChangeFunction={setModify}/>
 				</div>
 				<CalculateButton onClickFunction={setSolve} />
 			</div>
 		);
 	}
-	render() {
-		const {rows, matrixArray, solve, setCreate } = this.props;
+	renderCaption() {
+		const { solve, rows, matrixArray } = this.props;
 		return(
-			<div className="bg-black p2">
-				<h1 className="center">Inverse</h1>
-				<div> 
-					<MatrixSelect	setId={"rowsInv"}  onChangeFunction={setCreate} />
-				</div>
-				{ 
-					this.renderMatrices()
-				}
+			<React.Fragment>
 				{
 					(solve) ? 
 						solvedMatrix(matrixArray)
@@ -80,6 +73,23 @@ class Inverse extends React.Component {
 						<p>Click submit to compute</p>
 					: 
 						<p>Select the size of the matrices</p>
+				}
+			</React.Fragment>
+		);
+	}
+	render() {
+		const { setCreate } = this.props;
+		return(
+			<div className="bg-black p2">
+				<h1 className="center">Inverse</h1>
+				<div> 
+					<MatrixSelect	setId="rowsInv"  onChangeFunction={setCreate} />
+				</div>
+				{ 
+					this.renderMatrices()
+				}
+				{
+					this.renderCaption()
 				}
 			</div> 
 		);
