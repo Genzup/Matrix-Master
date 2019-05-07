@@ -46,16 +46,26 @@ class MatAdd extends React.Component {
 				<div className="bg-black p2">
 					<h1 className="center">Matrix Addition </h1>
 					<div> 
-						<MatrixSelect	setId={"rows"}	onChangeFunction={setCreateMatrix} />
-						<MatrixSelect	setId={"cols"}  onChangeFunction={setCreateMatrix} />
+						<MatrixSelect	setId="rows"	onChangeFunction={setCreateMatrix} />
+						<MatrixSelect	setId="cols"  onChangeFunction={setCreateMatrix} />
 					</div>
 					{ 
 						(col) ?
 							<div> 
 								<div>
-									<Matrix assignID={'mat1'} rows={row} cols={col} onChangeFunction={setChangeMatrix} />
+									<Matrix 
+										assignID='mat1' 
+										rows={row} 
+										cols={col} 
+										onChangeFunction={setChangeMatrix}
+									/>
 									<div className="symbol"><p>+</p></div>
-									<Matrix assignID={'mat2'} rows={row} cols={col} onChangeFunction={setChangeMatrix} />
+									<Matrix 
+										assignID='mat2' 
+										rows={row} 
+										cols={col} 
+										onChangeFunction={setChangeMatrix}
+									/>
 								</div>
 								<CalculateButton onClickFunction={setAddMatrix} />
 							</div>
@@ -76,7 +86,3 @@ class MatAdd extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MatAdd); 
-
-
-
-
