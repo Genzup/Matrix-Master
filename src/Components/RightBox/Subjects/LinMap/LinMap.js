@@ -99,7 +99,10 @@ class LinMap extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Linear Mapping</h1>
 				<div> 
-					<MatrixSelect	setId="rowsLM"  onChangeFunction={setCreate} />
+					<MatrixSelect
+						setId="rowsLM"  
+						onChangeFunction={setCreate} 
+					/>
 				</div>
 				{ this.renderMatrices() }
 				{ this.renderCaption() }
@@ -109,6 +112,3 @@ class LinMap extends React.Component {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LinMap);  
-
-
-
