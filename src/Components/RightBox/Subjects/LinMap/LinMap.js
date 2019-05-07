@@ -68,8 +68,23 @@ class LinMap extends React.Component {
 			</div>
 		);
 	}
+	renderCaption() {
+		const { solve, rows, matrixArray, vectorArray } = this.props;
+		return(
+			<React.Fragment>
+				{
+					(solve) ? 
+						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray, vectorArray)} />
+					:(rows) ?
+						<p>Click submit to compute</p>
+					: 
+						<p>Select the size of the matrices</p>
+				}
+			</React.Fragment>
+		);
+	}
 	render() {
-		const { rows, matrixArray, vectorArray,solve, setCreate } = this.props;
+		const { setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Linear Mapping</h1>
@@ -80,12 +95,7 @@ class LinMap extends React.Component {
 					this.renderMatrices()
 				}
 				{
-					(solve) ? 
-						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray, vectorArray)} />
-					:(rows) ?
-						<p>Click submit to compute</p>
-					: 
-						<p>Select the size of the matrices</p>
+					this.renderCaption()
 				}
 			</div> 
 		);
