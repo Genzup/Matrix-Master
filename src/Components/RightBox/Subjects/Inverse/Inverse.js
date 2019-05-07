@@ -83,14 +83,13 @@ class Inverse extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Inverse</h1>
 				<div> 
-					<MatrixSelect	setId="rowsInv"  onChangeFunction={setCreate} />
+					<MatrixSelect
+						setId="rowsInv"  
+						onChangeFunction={setCreate} 
+					/>
 				</div>
-				{ 
-					this.renderMatrices()
-				}
-				{
-					this.renderCaption()
-				}
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
