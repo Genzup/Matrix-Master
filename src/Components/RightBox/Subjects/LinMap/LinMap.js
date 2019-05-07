@@ -55,8 +55,21 @@ class LinMap extends React.Component {
 	componentWillUnmount() {
 		console.log('component has unmounted')
 	}
+	renderMatrices() {
+		const { rows, setModify, setModify2, setSolve } = this.props;
+		if (!rows) return null; 
+		return(
+			<div> 
+				<div>
+					<Matrix assignID={'mat9'} rows={rows} cols={rows} onChangeFunction={setModify}/>
+					<Matrix assignID={'matA'} rows={rows} cols={1} onChangeFunction={setModify2}/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
 	render() {
-		const {rows, matrixArray, vectorArray,solve, setCreate, setModify, setModify2, setSolve} = this.props;
+		const { rows, matrixArray, vectorArray,solve, setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Linear Mapping</h1>
@@ -64,16 +77,7 @@ class LinMap extends React.Component {
 					<MatrixSelect	setId={"rowsLM"}  onChangeFunction={setCreate} />
 				</div>
 				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix assignID={'mat9'} rows={rows} cols={rows} onChangeFunction={setModify}/>
-								<Matrix assignID={'matA'} rows={rows} cols={1} onChangeFunction={setModify2}/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
+					this.renderMatrices()
 				}
 				{
 					(solve) ? 
