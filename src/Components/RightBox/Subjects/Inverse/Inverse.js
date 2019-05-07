@@ -50,8 +50,20 @@ class Inverse extends React.Component {
 	componentWillUnmount() {
 		console.log('component has unmounted')
 	}
+	renderMatrices() {
+		const { rows, setModify, setSolve } = this.props;
+		if (!rows) return null; 
+		return(
+			<div> 
+				<div>
+					<Matrix assignID={'matB'} rows={rows} cols={rows} onChangeFunction={setModify}/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
 	render() {
-		const {rows, matrixArray, solve, setCreate, setModify, setSolve} = this.props;
+		const {rows, matrixArray, solve, setCreate } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Inverse</h1>
@@ -59,15 +71,7 @@ class Inverse extends React.Component {
 					<MatrixSelect	setId={"rowsInv"}  onChangeFunction={setCreate} />
 				</div>
 				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix assignID={'matB'} rows={rows} cols={rows} onChangeFunction={setModify}/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
+					this.renderMatrices()
 				}
 				{
 					(solve) ? 
