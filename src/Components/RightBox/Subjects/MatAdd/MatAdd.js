@@ -49,7 +49,7 @@ class MatAdd extends React.Component {
 						<MatrixSelect	setId="rows"	onChangeFunction={setCreateMatrix} />
 						<MatrixSelect	setId="cols"  onChangeFunction={setCreateMatrix} />
 					</div>
-					{ 
+					{
 						(col) ?
 							<div> 
 								<div>
