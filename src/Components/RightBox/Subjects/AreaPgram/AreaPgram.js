@@ -85,7 +85,12 @@ class AreaPgram extends React.Component {
 		return( rows &&
 			<div> 
 				<div>
-					u = <Matrix assignID='matD' rows={rows} cols={1} onChangeFunction={setModify}/>
+					u = <Matrix 
+							assignID='matD' 
+							rows={rows} 
+							cols={1} 
+							onChangeFunction={setModify}
+						/>
 					
 					v = <Matrix assignID='matE' rows={rows} cols={1} onChangeFunction={setModify2}/>
 
