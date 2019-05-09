@@ -77,11 +77,12 @@ class App extends Component {
         <MMtitle/>
         <details className="dropMenu white">
           <summary>
-            <input type="button"
-               className="no-underline near-white bg-animate bg-near-black hover-bg-gray 
-                       inline-flex items-center"
-               value="Page"
-               style={{fontSize: "12.5px"}}
+            <input 
+              type="button"
+              className="no-underline near-white bg-animate bg-near-black hover-bg-gray 
+                         inline-flex items-center"
+              value="Page"
+              style={{fontSize: "12.5px"}}
             />
           </summary>
           {
