@@ -101,7 +101,12 @@ class AreaPgram extends React.Component {
 
 					{ rows === "3" &&
 						<React.Fragment>
-							w = <Matrix assignID='matF' rows={rows} cols={1} onChangeFunction={setModify3}/>
+							w = <Matrix 
+									assignID='matF' 
+									rows={rows} 
+									cols={1} 
+									onChangeFunction={setModify3}
+								/>
 						</React.Fragment>
 					}
 				</div>
