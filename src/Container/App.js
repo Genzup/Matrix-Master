@@ -85,14 +85,10 @@ class App extends Component {
               style={{fontSize: "12.5px"}}
             />
           </summary>
-          {
-            renderButtons(setNewPage)
-          }
+          { renderButtons(setNewPage) }
         </details>
         <div className="left bg-blue white b--lightest-blue br3">
-          {
-            renderButtons(setNewPage)
-          }
+          { renderButtons(setNewPage) }
         </div>
         <RightInfo page={page}/>
         <RightBox page={page}/>
