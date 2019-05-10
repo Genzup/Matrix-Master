@@ -58,10 +58,10 @@ class App extends Component {
     return(
       BUTTON_NAMES.map(name => {
         return(
-        <MyButton
-          buttonName={name} 
-          setNewPage={setNewPage}
-        />
+          <MyButton
+            buttonName={name} 
+            setNewPage={setNewPage}
+          />
         )
       })
     );
