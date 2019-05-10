@@ -57,11 +57,12 @@ class App extends Component {
   renderButtons(setNewPage) {
     return(
       BUTTON_NAMES.map(name => {
-        return 
-        <MyButton 
+        return(
+        <MyButton
           buttonName={name} 
           setNewPage={setNewPage}
         />
+        )
       })
     );
   }
