@@ -26,8 +26,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => { 
  	return {
-		setCreateMatrix: (event) => dispatch(setCreateMatrix(document.getElementById('rows').value, document.getElementById('cols').value)),
-		setChangeMatrix: (event) => dispatch(setChangeMatrix(event.target.id, event.target.value)),
+		setCreateMatrix: (event) => dispatch(
+			setCreateMatrix(
+				document.getElementById('rows').value, 
+				document.getElementById('cols').value
+			)
+		),
+		setChangeMatrix: (event) => dispatch(
+			setChangeMatrix(
+				event.target.id, 
+				event.target.value
+			)
+		),
 		setAddMatrix: () => dispatch(setAddMatrix())
 	}
 }
