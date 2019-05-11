@@ -35,18 +35,30 @@ const mapDispatchToProps = (dispatch) => {
 const solvedMatrix = (matrix1, matrix2) => math.add(matrix1, matrix2);
 
 class MatAdd extends React.Component {
+	renderSelect() {
+		const { setCreateMatrix } = this.props;
+		return(
+			<div> 
+				<MatrixSelect
+					setId="rows"
+					onChangeFunction={setCreateMatrix}
+				/>
+				<MatrixSelect
+					setId="cols"
+					onChangeFunction={setCreateMatrix}
+				/>
+			</div>
+		);
+	}
 	render() {
 		const {
 			row, col, matrixArray1, matrixArray2, 
-			addMatrix, setCreateMatrix, setChangeMatrix, setAddMatrix
+			addMatrix, setChangeMatrix, setAddMatrix
 		} = this.props
 		return(
 				<div className="bg-black p2">
 					<h1 className="center">Matrix Addition </h1>
-					<div> 
-						<MatrixSelect	setId="rows"	onChangeFunction={setCreateMatrix} />
-						<MatrixSelect	setId="cols"  onChangeFunction={setCreateMatrix} />
-					</div>
+					{ this.renderSelect() }
 					{
 						(col) ?
 							<div> 
