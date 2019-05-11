@@ -38,7 +38,9 @@ const mapDispatchToProps = (dispatch) => {
 				event.target.value
 			)
 		),
-		setAddMatrix: () => dispatch(setAddMatrix())
+		setAddMatrix: () => dispatch(
+			setAddMatrix()
+		)
 	}
 }
 
