@@ -50,38 +50,40 @@ class MatAdd extends React.Component {
 			</div>
 		);
 	}
+	renderMatrices() {
+		const { row, col, setChangeMatrix } = this.props; 
+		if (!col) return null; 
+		return(
+			<div> 
+				<div>
+					<Matrix 
+						assignID='mat1' 
+						rows={row} 
+						cols={col} 
+						onChangeFunction={setChangeMatrix}
+					/>
+					<div className="symbol"><p>+</p></div>
+					<Matrix 
+						assignID='mat2' 
+						rows={row} 
+						cols={col} 
+						onChangeFunction={setChangeMatrix}
+					/>
+				</div>
+				<CalculateButton onClickFunction={setAddMatrix} />
+			</div>
+		);
+ 	}
 	render() {
 		const {
-			row, col, matrixArray1, matrixArray2, 
-			addMatrix, setChangeMatrix, setAddMatrix
+			col, matrixArray1, matrixArray2, 
+			addMatrix
 		} = this.props
 		return(
 				<div className="bg-black p2">
 					<h1 className="center">Matrix Addition </h1>
 					{ this.renderSelect() }
-					{
-						(col) ?
-							<div> 
-								<div>
-									<Matrix 
-										assignID='mat1' 
-										rows={row} 
-										cols={col} 
-										onChangeFunction={setChangeMatrix}
-									/>
-									<div className="symbol"><p>+</p></div>
-									<Matrix 
-										assignID='mat2' 
-										rows={row} 
-										cols={col} 
-										onChangeFunction={setChangeMatrix}
-									/>
-								</div>
-								<CalculateButton onClickFunction={setAddMatrix} />
-							</div>
-						:  
-							<p></p>
-					}
+					{ this.renderMatrices() }
 					{
 						(addMatrix) ? 
 							<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} />
