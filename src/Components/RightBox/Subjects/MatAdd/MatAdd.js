@@ -74,24 +74,28 @@ class MatAdd extends React.Component {
 			</div>
 		);
  	}
+ 	renderCaption() {
+		const { col, matrixArray1, matrixArray2, addMatrix } = this.props
+ 		return(
+ 			<React.Fragment>
+ 				{
+					(addMatrix) ? 
+						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} />
+					:(col) ?
+						<p>Click submit to compute</p>
+					: 
+						<p>Select the size of the matrices</p>
+				}
+ 			</React.Fragment>
+ 		);
+ 	}
 	render() {
-		const {
-			col, matrixArray1, matrixArray2, 
-			addMatrix
-		} = this.props
 		return(
 				<div className="bg-black p2">
 					<h1 className="center">Matrix Addition </h1>
 					{ this.renderSelect() }
 					{ this.renderMatrices() }
-					{
-						(addMatrix) ? 
-							<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} />
-						:(col) ?
-							<p>Click submit to compute</p>
-						: 
-							<p>Select the size of the matrices</p>
-					}
+					{ this.renderCaption() }
 				</div>
 		);
 	}
