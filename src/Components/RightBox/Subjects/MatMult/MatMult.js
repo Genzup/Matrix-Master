@@ -55,16 +55,22 @@ const mapDispatchToProps = (dispatch) => {
 const solvedMatrix = (matrix1, matrix2) => math.multiply(matrix1, matrix2);
 
 class MatMult extends React.Component {
+	renderSelect() {
+		const { setCreate } = this.props;
+		return(
+			<div> 
+				<MatrixSelect	setId={"rows1MM"}  onChangeFunction={setCreate} />
+				<MatrixSelect	setId={"cols1rows2MM"}  onChangeFunction={setCreate} />
+				<MatrixSelect	setId={"cols2MM"}  onChangeFunction={setCreate} />
+			</div>
+		);
+	}
 	render() {
-		const {rows1, cols1rows2, cols2, matrixArray1, matrixArray2, solve, setCreate, setModify1, setModify2, setSolve} = this.props;
+		const {rows1, cols1rows2, cols2, matrixArray1, matrixArray2, solve, setModify1, setModify2, setSolve} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Matrix Multiplication</h1>
-				<div> 
-					<MatrixSelect	setId={"rows1MM"}  onChangeFunction={setCreate} />
-					<MatrixSelect	setId={"cols1rows2MM"}  onChangeFunction={setCreate} />
-					<MatrixSelect	setId={"cols2MM"}  onChangeFunction={setCreate} />
-				</div>
+				{ this.renderSelect() }
 				{ 
 					(cols2) ?
 						<div> 
