@@ -78,13 +78,10 @@ class MatMult extends React.Component {
 			</div>
 		);
 	}
-	render() {
+	renderCaption() {
 		const {rows1, matrixArray1, matrixArray2, solve } = this.props;
 		return(
-			<div className="bg-black p2">
-				<h1 className="center">Matrix Multiplication</h1>
-				{ this.renderSelect() }
-				{ this.renderMatrices() }
+			<React.Fragment>
 				{
 					(solve) ? 
 						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} />
@@ -93,6 +90,16 @@ class MatMult extends React.Component {
 					: 
 						<p>Select the size of the matrices</p>
 				}
+			</React.Fragment>
+		);
+	}
+	render() {
+		return(
+			<div className="bg-black p2">
+				<h1 className="center">Matrix Multiplication</h1>
+				{ this.renderSelect() }
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
