@@ -59,16 +59,16 @@ class MatSolve extends React.Component {
 			<div className="bg-black p2">
 				<h1 className="center">Solving nxn Matrix for x</h1>
 				<div> 
-					<MatrixSelect	setId={"RowsColsSolve"}  onChangeFunction={setCreate} />
+					<MatrixSelect	setId="RowsColsSolve"  onChangeFunction={setCreate} />
 				</div>
 				{ 
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID={'mat7'} rows={rows} cols={rows} onChangeFunction={setModify}/>
+								<Matrix assignID='mat7' rows={rows} cols={rows} onChangeFunction={setModify}/>
 								<SolVector rows={rows}/>
 								<div className="symbol"><p>=</p></div>
-								<Matrix assignID={'mat8'} rows={rows} cols={1} onChangeFunction={setModify2}/>
+								<Matrix assignID='mat8' rows={rows} cols={1} onChangeFunction={setModify2}/>
 
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
