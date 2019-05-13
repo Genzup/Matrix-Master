@@ -68,18 +68,10 @@ class MatSolve extends React.Component {
 			</div>
 		);
 	}
-	render() {
-		const {rows, matrixArray, solve, setCreate, bArray} = this.props;
+	renderCaption() {
+		const {rows, matrixArray, solve, bArray} = this.props;
 		return(
-			<div className="bg-black p2">
-				<h1 className="center">Solving nxn Matrix for x</h1>
-				<div> 
-					<MatrixSelect
-						setId="RowsColsSolve"  
-						onChangeFunction={setCreate}
-					/>
-				</div>
-				{ this.renderMatrices() }
+			<React.Fragment>
 				{
 					(solve) ? 
 						<div>
@@ -92,6 +84,22 @@ class MatSolve extends React.Component {
 					: 
 						<p>Select the size of the matrices</p>
 				}
+			</React.Fragment>
+		);
+	}
+	render() {
+		const { setCreate } = this.props;
+		return(
+			<div className="bg-black p2">
+				<h1 className="center">Solving nxn Matrix for x</h1>
+				<div> 
+					<MatrixSelect
+						setId="RowsColsSolve"  
+						onChangeFunction={setCreate}
+					/>
+				</div>
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
