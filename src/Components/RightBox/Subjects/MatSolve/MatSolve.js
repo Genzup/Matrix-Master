@@ -53,29 +53,33 @@ const mapDispatchToProps = (dispatch) => {
 const solvedMatrix = (matrix, vector) => math.lusolve(matrix, vector);
 
 class MatSolve extends React.Component {
+	renderMatrices() {
+		const { rows, setModify, setModify2, setSolve } = this.props; 
+		if (!rows) return null; 
+		return(
+			<div> 
+				<div>
+					<Matrix assignID='mat7' rows={rows} cols={rows} onChangeFunction={setModify}/>
+					<SolVector rows={rows}/>
+					<div className="symbol"><p>=</p></div>
+					<Matrix assignID='mat8' rows={rows} cols={1} onChangeFunction={setModify2}/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
 	render() {
-		const {rows, matrixArray, solve, setCreate, setModify, setModify2, setSolve, bArray} = this.props;
+		const {rows, matrixArray, solve, setCreate, bArray} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Solving nxn Matrix for x</h1>
 				<div> 
-					<MatrixSelect	setId="RowsColsSolve"  onChangeFunction={setCreate} />
+					<MatrixSelect
+						setId="RowsColsSolve"  
+						onChangeFunction={setCreate}
+					/>
 				</div>
-				{ 
-					(rows) ?
-						<div> 
-							<div>
-								<Matrix assignID='mat7' rows={rows} cols={rows} onChangeFunction={setModify}/>
-								<SolVector rows={rows}/>
-								<div className="symbol"><p>=</p></div>
-								<Matrix assignID='mat8' rows={rows} cols={1} onChangeFunction={setModify2}/>
-
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
-				}
+				{ this.renderMatrices() }
 				{
 					(solve) ? 
 						<div>
