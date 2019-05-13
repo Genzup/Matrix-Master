@@ -65,24 +65,26 @@ class MatMult extends React.Component {
 			</div>
 		);
 	}
+	renderMatrices() {
+		const { cols2, rows1, cols1rows2, setModify1, setModify2, setSolve } = this.props; 
+		if (!cols2) return null; 
+		return(
+			<div> 
+				<div>
+					<Matrix assignID='mat5' rows={rows1} cols={cols1rows2} onChangeFunction={setModify1}/>
+					<Matrix assignID='mat6' rows={cols1rows2} cols={cols2} onChangeFunction={setModify2}/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
 	render() {
-		const {rows1, cols1rows2, cols2, matrixArray1, matrixArray2, solve, setModify1, setModify2, setSolve} = this.props;
+		const {rows1, matrixArray1, matrixArray2, solve } = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Matrix Multiplication</h1>
 				{ this.renderSelect() }
-				{ 
-					(cols2) ?
-						<div> 
-							<div>
-								<Matrix assignID='mat5' rows={rows1} cols={cols1rows2} onChangeFunction={setModify1}/>
-								<Matrix assignID='mat6' rows={cols1rows2} cols={cols2} onChangeFunction={setModify2}/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
-				}
+				{ this.renderMatrices() }
 				{
 					(solve) ? 
 						<MatrixPrint solvedMatrix={solvedMatrix(matrixArray1, matrixArray2)} />
