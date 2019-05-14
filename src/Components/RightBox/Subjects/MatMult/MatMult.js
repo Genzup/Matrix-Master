@@ -59,9 +59,18 @@ class MatMult extends React.Component {
 		const { setCreate } = this.props;
 		return(
 			<div> 
-				<MatrixSelect	setId="rows1MM"  onChangeFunction={setCreate} />
-				<MatrixSelect	setId="cols1rows2MM"  onChangeFunction={setCreate} />
-				<MatrixSelect	setId="cols2MM"  onChangeFunction={setCreate} />
+				<MatrixSelect
+					setId="rows1MM"
+					onChangeFunction={setCreate}
+				/>
+				<MatrixSelect
+					setId="cols1rows2MM"
+					onChangeFunction={setCreate}
+				/>
+				<MatrixSelect
+					setId="cols2MM"
+					onChangeFunction={setCreate} 
+				/>
 			</div>
 		);
 	}
