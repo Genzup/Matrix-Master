@@ -85,13 +85,10 @@ class ScaMult extends React.Component {
 			</div>
 		);
 	}
-	render() {
+	renderCaption() {
 		const {rows, solve, matrixArray, scale} = this.props;
-		return(
-			<div className="bg-black p2">
-				<h1 className="center">Scalar Multiplication</h1>
-				{ this.renderSelect() }
-				{ this.renderMatrices() }
+		return (
+			<React.Fragment>
 				{
 					(solve) ? 
 						<MatrixPrint solvedMatrix={solvedMatrix(scale, matrixArray)} />
@@ -100,6 +97,16 @@ class ScaMult extends React.Component {
 					: 
 						<p>Select the size of the matrices</p>
 				}
+			</React.Fragment>
+		);
+	}
+	render() {
+		return(
+			<div className="bg-black p2">
+				<h1 className="center">Scalar Multiplication</h1>
+				{ this.renderSelect() }
+				{ this.renderMatrices() }
+				{ this.renderCaption() }
 			</div> 
 		);
 	}
