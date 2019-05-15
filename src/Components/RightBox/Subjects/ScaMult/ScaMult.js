@@ -14,7 +14,7 @@ import {
 	setChangeMatrixSM, 
 	setScaleValue
 } from './State/actions';
- 
+
 const mapStateToProps = (state) => { 
   	return {
   		rows: state.createMatrix.ScaMultRows, 
@@ -55,7 +55,6 @@ const solvedMatrix = (scale, matrix) => {
 	return math.multiply(scale, matrix);
 }
 
-
 class ScaMult extends React.Component {
 	renderSelect() {
 		const { setCreateSM } = this.props;
@@ -78,8 +77,17 @@ class ScaMult extends React.Component {
 		return(
 			<div> 
 				<div>
-					<input id="scaleInput" className="matBox" onChange={setScale}/>
-					<Matrix assignID={'mat3'} rows={rows} cols={cols} onChangeFunction={setChangeMatrixSM}/>
+					<input 
+						id="scaleInput"
+						className="matBox"
+						onChange={setScale}
+					/>
+					<Matrix 
+						assignID='mat3' 
+						rows={rows} 
+						cols={cols} 
+						onChangeFunction={setChangeMatrixSM}
+					/>
 				</div>
 				<CalculateButton onClickFunction={setSolve} />
 			</div>
@@ -112,17 +120,4 @@ class ScaMult extends React.Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScaMult);  
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(ScaMult);
