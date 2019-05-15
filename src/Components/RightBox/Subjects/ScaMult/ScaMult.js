@@ -72,24 +72,26 @@ class ScaMult extends React.Component {
 			</div>
 		);
 	}
+	renderMatrices() {
+		const { cols, setScale, rows, setSolve } = this.props; 
+		if (!cols) return null; 
+		return(
+			<div> 
+				<div>
+					<input id="scaleInput" className="matBox" onChange={setScale}/>
+					<Matrix assignID={'mat3'} rows={rows} cols={cols} onChangeFunction={setChangeMatrixSM}/>
+				</div>
+				<CalculateButton onClickFunction={setSolve} />
+			</div>
+		);
+	}
 	render() {
-		const {rows, cols, solve, setSolve, setChangeMatrixSM, setScale, matrixArray, scale} = this.props;
+		const {rows, solve, matrixArray, scale} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Scalar Multiplication</h1>
 				{ this.renderSelect() }
-				{ 
-					(cols) ?
-						<div> 
-							<div>
-								<input id="scaleInput" className="matBox" onChange={setScale}/>
-								<Matrix assignID={'mat3'} rows={rows} cols={cols} onChangeFunction={setChangeMatrixSM}/>
-							</div>
-							<CalculateButton onClickFunction={setSolve} />
-						</div>
-					:  
-						<p></p>
-				}
+				{ this.renderMatrices() }
 				{
 					(solve) ? 
 						<MatrixPrint solvedMatrix={solvedMatrix(scale, matrixArray)} />
