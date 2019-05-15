@@ -55,16 +55,29 @@ const solvedMatrix = (scale, matrix) => {
 	return math.multiply(scale, matrix);
 }
 
+
 class ScaMult extends React.Component {
+	renderSelect() {
+		const { setCreateSM } = this.props;
+		return(
+			<div> 
+				<MatrixSelect
+					setId="RowsSM"
+					onChangeFunction={setCreateSM}
+				/>
+				<MatrixSelect
+					setId="ColsSM"
+					onChangeFunction={setCreateSM}
+				/>
+			</div>
+		);
+	}
 	render() {
-		const {rows, cols, setCreateSM, solve, setSolve, setChangeMatrixSM, setScale, matrixArray, scale} = this.props;
+		const {rows, cols, solve, setSolve, setChangeMatrixSM, setScale, matrixArray, scale} = this.props;
 		return(
 			<div className="bg-black p2">
 				<h1 className="center">Scalar Multiplication</h1>
-				<div> 
-					<MatrixSelect	setId={"RowsSM"}  onChangeFunction={setCreateSM} />
-					<MatrixSelect	setId={"ColsSM"}  onChangeFunction={setCreateSM} />
-				</div>
+				{ this.renderSelect() }
 				{ 
 					(cols) ?
 						<div> 
