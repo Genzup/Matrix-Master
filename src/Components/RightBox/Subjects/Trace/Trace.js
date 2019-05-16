@@ -56,7 +56,12 @@ class Trace extends React.Component {
 					(rows) ?
 						<div> 
 							<div>
-								<Matrix assignID='matH' rows={rows} cols={rows} onChangeFunction={setModify}/>
+								<Matrix 
+									assignID='matH'
+									rows={rows}
+									cols={rows}
+									onChangeFunction={setModify}
+								/>
 							</div>
 							<CalculateButton onClickFunction={setSolve} />
 						</div>
